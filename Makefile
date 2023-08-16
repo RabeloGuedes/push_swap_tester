@@ -1,24 +1,30 @@
-NAME = push_swap_tester
-
-CC = cc
-
-FLAGS = -Wall -Wextra -Werror
-
-SRC_FILES = push_swap_tester.c
-
-OBJS_FILES = $(SRC_FILES:.c=.o)
+NAME = push_swap
+SCRIPTS_PATH = ./shell_scripts/
+DIRS = test_error_files test_output_files test_sequence
 
 all: $(NAME)
 
-$(NAME): $(notdir $(OBJS_FILES))
-	@ar rc $(NAME) $(notdir $(OBJS_FILES))
-	@norminette  
+$(NAME): fclean
+	@export IS_FULL="NO" && export SINGLE_TEST="ALL" && sh $(SCRIPTS_PATH)run_tests.sh
+# @norminette  
 
-$(notdir $(OBJS_FILES)): $(SRC_FILES)
-	@$(CC) -c $(CCFLAGS) -I ./inc $(SRC_FILES)
+full: fclean
+	@export IS_FULL="YES" && export SINGLE_TEST="ALL" && sh $(SCRIPTS_PATH)run_tests.sh
+
+test_3: fclean
+	@export IS_FULL="NO" && export SINGLE_TEST="3" && sh $(SCRIPTS_PATH)run_tests.sh
+
+test_5: fclean
+	@export IS_FULL="NO" && export SINGLE_TEST="5" && sh $(SCRIPTS_PATH)run_tests.sh
+
+test_100: fclean
+	@export IS_FULL="NO" && export SINGLE_TEST="100" && sh $(SCRIPTS_PATH)run_tests.sh
+	
+test_500: fclean
+	@export IS_FULL="NO" && export SINGLE_TEST="500" && sh $(SCRIPTS_PATH)run_tests.sh
 
 clean:
-	@rm -rf $(notdir $(OBJS_FILES))
+	@rm -rf $(DIRS)
 
 fclean: clean
 	@rm -rf $(NAME)
