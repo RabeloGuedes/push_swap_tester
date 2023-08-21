@@ -16,7 +16,7 @@ for i in $(seq 1 100); do
 	RANDOM_SEQ_5=$(seq -5000 5000 | shuf -n 5)
 	echo "$RANDOM_SEQ_5" > $TEST_SEQUENCES$TEST_5$FILE_NAME_5_SEQUENCE$i$FILE_END;
 	./$PROGRAM_NAME $RANDOM_SEQ_5 > $TEST_OUTPUT_FILES$TEST_5$FILE_NAME_5_OUTPUT$i$FILE_NAME_END 2>$TEST_ERROR_FILES$TEST_5$FILE_NAME_5_ERROR$i$FILE_NAME_END;
-	result=$(./$PROGRAM_NAME $RANDOM_SEQ_5 | ./checker $RANDOM_SEQ_5);
+	result=$(./$PROGRAM_NAME $RANDOM_SEQ_5 | ./$CHECKER $RANDOM_SEQ_5);
 	if [[ "$result" = "OK" && "$IS_FULL" = "YES" ]]; then
 		echo "Test_5: ${i}º$GREEN OK$WHITE";
 	elif [ "$result" = "KO" ]; then

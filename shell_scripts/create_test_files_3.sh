@@ -16,7 +16,7 @@ for i in $(seq 1 100); do
 	RANDOM_SEQ_3=$(seq -5000 5000 | shuf -n 3)
 	echo "$RANDOM_SEQ_3" > $TEST_SEQUENCES$TEST_3$FILE_NAME_3_SEQUENCE$i$FILE_END;
 	./$PROGRAM_NAME $RANDOM_SEQ_3 > $TEST_OUTPUT_FILES$TEST_3$FILE_NAME_3_OUTPUT$i$FILE_NAME_END 2>$TEST_ERROR_FILES$TEST_3$FILE_NAME_3_ERROR$i$FILE_NAME_END;
-	result=$(./$PROGRAM_NAME $RANDOM_SEQ_3 | ./checker $RANDOM_SEQ_3);
+	result=$(./$PROGRAM_NAME $RANDOM_SEQ_3 | ./$CHECKER $RANDOM_SEQ_3);
 	if [[ "$result" = "OK" && "$IS_FULL" = "YES" ]]; then
 		echo "Test_3: ${i}º$GREEN OK$WHITE";
 	elif [ "$result" = "KO" ]; then

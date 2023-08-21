@@ -7,7 +7,9 @@ TEST_3_PATH="$TEST_OUTPUT_FILES$TEST_3";
 MIN_LINES=$(wc -l < "$TEST_3_PATH"/test_3_numbers_output1.txt)
 FILE_NAME_3_OUTPUT="test_3_numbers_output"
 
-echo "\n${SUPER_GREEN}Testing the number of lines of the 3 random integers sequences!${RESET}\n"
+echo ""
+echo "${SUPER_GREEN}Testing the number of lines of the 3 random integers sequences!${RESET}"
+echo ""
 sleep 2;
 
 # It counts the number of lines of 3 output files and display it's name as well as the number of lines.
@@ -24,7 +26,8 @@ for i in $(seq 1 100); do
 	TOTAL_LINES=$(($TOTAL_LINES + $LINES_IN_FILES));
 done
 
-echo "$YELLOW=========================================RESULT=========================================$YELLOW\n"
+echo "$YELLOW=========================================RESULT=========================================$YELLOW"
+echo ""
 
 # It shows the max number of lines, i.e. from the file with most lines.
 if [ "$MAX_LINES" -gt "3" ];
@@ -44,11 +47,15 @@ echo "$WHITE$MAGENTA 		Total lines in all files: $TOTAL_LINES$WHITE     	       
 echo "$WHITE$BLUE 		The average lines per file is: $(($TOTAL_LINES / 100))$WHITE          	 	          $WHITE "
 
 if [ "$MAX_LINES" -lt "4" ];
-	then echo "\n                                    ${SUPER_GREEN}Grade: Great";
+	then
+		echo "";
+		echo "                                    ${SUPER_GREEN}Grade: Great";
 	export NEXT_TEST="YES";
 else
-	echo "\n                                    ${SUPER_RED}Grade: Failure";
+	echo "";
+	echo "                                    ${SUPER_RED}Grade: Failure";
 	export NEXT_TEST="NO";
 fi;
 
-echo "\n$YELLOW=========================================RESULT=========================================$YELLOW$WHITE"
+echo ""
+echo "$YELLOW=========================================RESULT=========================================$YELLOW$WHITE"
