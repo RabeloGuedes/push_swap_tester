@@ -40,5 +40,5 @@ done
 if [ "$(find $TEST_ERROR_FILES$TEST_100 -type f -name ".txt" | wc -l )" -gt "0" ]; then
 	echo "${SUPER_RED}Something went wrong, check $TEST_ERROR_FILES$TEST_100 $ERROR_FILES_100_AMOUNT errors :($WHITE";
 else
-	echo "${SUPER_GREEN}Really good, $ERROR_FILES_100_AMOUNT errors$WHITE";
+	echo "${SUPER_GREEN}Really good, $ERROR_FILES_100_AMOUNT compilation errors$WHITE";
 fi;

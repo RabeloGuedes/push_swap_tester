@@ -2,9 +2,11 @@
 
 # Executes all the necessary scripts
 
+
 export TESTER_PATH="$(pwd)";
 export SHELL_SCRIPTS_PATH="shell_scripts/";
 . "${SHELL_SCRIPTS_PATH}put_variables_on_terminal.sh";
+echo "${SUPER_YELLOW}Warning: ${SUPER_RED}Be aware that this tester does not\nuses ${SUPER_YELLOW}valdring ${SUPER_RED} or ${SUPER_YELLOW}leaks ${SUPER_RED} to verify ${SUPER_YELLOW}memory\nleaks${SUPER_RED}. You should do it by your self!${RESET}";
 if [ "$(find "$TESTER_PATH" -type f -name "checker*" | wc -l)" -eq 0 ]; then
 	echo "${SUPER_YELLOW}Warning: ${SUPER_RED}No ${SUPER_GREEN}checker ${SUPER_RED}was found, in order to test your project properly,\nturn into a checker file to the root of this project and name it checker,\ndo not forget to give it execution permission with chmod!\n${SUPER_YELLOW}Example: chmod +x checker${RESET}";
 	exit;
