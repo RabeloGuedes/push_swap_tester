@@ -11,12 +11,13 @@ if [ "$(find "$TESTER_PATH" -type f -name "checker*" | wc -l)" -eq 0 ]; then
 	echo "${SUPER_YELLOW}Warning: ${SUPER_RED}No ${SUPER_GREEN}checker ${SUPER_RED}was found, in order to test your project properly,\nturn into a checker file to the root of this project and name it checker,\ndo not forget to give it execution permission with chmod!\n${SUPER_YELLOW}Example: chmod +x checker${RESET}";
 	exit;
 else
-	if [ "$(uname -m)" = "ARM64" ]; then
-		export CHECKER="checker_macOS";
-	elif [ "$(uname -m)" = "x86_64" ]; then
+	if [ "$(uname -m)" = "x86_64" ]; then
 		export CHECKER="checker_linux";
+	else
+		export CHECKER="checker_macOS";
 	fi;
 fi;
+
 . "${SHELL_SCRIPTS_PATH}checks_tools.sh";
 if [ "$(which shuf)" != "" ];
 	then . "${SHELL_SCRIPTS_PATH}get_push_swap_path.sh";
